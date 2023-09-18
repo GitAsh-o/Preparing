@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		610D6F062AB81B89001F7776 /* UIColorHex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 610D6F052AB81B89001F7776 /* UIColorHex.swift */; };
+		610D6F092AB86C03001F7776 /* PKHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 610D6F082AB86C03001F7776 /* PKHUD */; };
 		618C78FD2AB509A60042E8CA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618C78FC2AB509A60042E8CA /* AppDelegate.swift */; };
 		618C78FF2AB509A60042E8CA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618C78FE2AB509A60042E8CA /* SceneDelegate.swift */; };
 		618C79012AB509A60042E8CA /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618C79002AB509A60042E8CA /* EventViewController.swift */; };
@@ -57,6 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				610D6F092AB86C03001F7776 /* PKHUD in Frameworks */,
 				618C79162AB50E7E0042E8CA /* RealmSwift in Frameworks */,
 				618C79142AB50E7E0042E8CA /* Realm in Frameworks */,
 			);
@@ -126,6 +128,7 @@
 			packageProductDependencies = (
 				618C79132AB50E7E0042E8CA /* Realm */,
 				618C79152AB50E7E0042E8CA /* RealmSwift */,
+				610D6F082AB86C03001F7776 /* PKHUD */,
 			);
 			productName = Preparing;
 			productReference = 618C78F92AB509A60042E8CA /* Preparing.app */;
@@ -157,6 +160,7 @@
 			mainGroup = 618C78F02AB509A50042E8CA;
 			packageReferences = (
 				618C79122AB50E7E0042E8CA /* XCRemoteSwiftPackageReference "realm-swift" */,
+				610D6F072AB86C03001F7776 /* XCRemoteSwiftPackageReference "PKHUD" */,
 			);
 			productRefGroup = 618C78FA2AB509A60042E8CA /* Products */;
 			projectDirPath = "";
@@ -346,6 +350,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = LGN7D4A76U;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Preparing/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -373,6 +378,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = LGN7D4A76U;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Preparing/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -417,6 +423,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		610D6F072AB86C03001F7776 /* XCRemoteSwiftPackageReference "PKHUD" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pkluz/PKHUD";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 		618C79122AB50E7E0042E8CA /* XCRemoteSwiftPackageReference "realm-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/realm/realm-swift";
@@ -428,6 +442,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		610D6F082AB86C03001F7776 /* PKHUD */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 610D6F072AB86C03001F7776 /* XCRemoteSwiftPackageReference "PKHUD" */;
+			productName = PKHUD;
+		};
 		618C79132AB50E7E0042E8CA /* Realm */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 618C79122AB50E7E0042E8CA /* XCRemoteSwiftPackageReference "realm-swift" */;

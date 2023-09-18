@@ -64,7 +64,7 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
         return Array(realm.objects(Event.self))
     }
     
-    func deleteCell(in cell: EventTableViewCell) {
+    /*func deleteCell(in cell: EventTableViewCell) {
         print("Cellを削除しました")
         if let indexPath = tableView.indexPath(for: cell) {
             try! realm.write{
@@ -74,7 +74,7 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
             tableView.deleteRows(at: [indexPath], with: .automatic)
             tableView.reloadData()
         }
-    }
+    }*/
     
     func reload(){
         events = readEvents()
@@ -92,8 +92,7 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
         let editMenu = UIAction(title: "編集", image: nil) { (action) in
             print("編集")
             let storyboard: UIStoryboard = self.storyboard!
-            let nextView = storyboard.instantiateViewController(identifier: "toNewEventView") as! NewEventViewController
-            
+            let nextView = storyboard.instantiateViewController(identifier: "NewEventView") as! NewEventViewController
             self.present(nextView, animated: true, completion: nil)
         }
         let deleteMenu = UIAction(title: "削除", image: nil) { (action) in
