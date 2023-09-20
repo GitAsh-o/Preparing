@@ -38,6 +38,7 @@ class EventTableViewCell: UITableViewCell {
         titleLabel.text = title
         if color == "red"{
             backColor = UIColor(hex: "EFC0C0")
+            
         }else if color == "purple"{
             backColor = UIColor(hex: "DDBCE9")
         }else if color == "blue"{
@@ -47,7 +48,7 @@ class EventTableViewCell: UITableViewCell {
         }else if color == "yellow"{
             backColor = UIColor(hex: "EBEEBC")
         }else if color == "glay"{
-            backColor = UIColor(hex: "EFEFEF")
+            backColor = UIColor(hex: "D3D3D3")
         }
         self.backgroundColor = backColor
     }

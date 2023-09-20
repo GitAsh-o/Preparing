@@ -15,10 +15,6 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
     let realm = try! Realm()
     var events: [Event] = []
     var selectedEvent: Event? = nil
-    
-    var indexPath: IndexPath!
-    
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,8 +26,8 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     override func viewWillAppear(_ animated: Bool) {
-            events = readEvents()
-            tableView.reloadData()
+        events = readEvents()
+        tableView.reloadData()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -107,14 +103,14 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
                 style: .default,
                 handler: {action in
                     print("deleteCell")
-                    /*if let indexPath = tableView.indexPath(for: cell) {
+                    if let indexPath = tableView.indexPath {
                         try! realm.write{
                             realm.delete(events[indexPath.row])
                         }
                         events.remove(at: indexPath.row)
                         tableView.deleteRows(at: [indexPath], with: .automatic)
                         tableView.reloadData()
-                    }*/
+                    }
                 }
             ))
             alert.addAction(UIAlertAction(

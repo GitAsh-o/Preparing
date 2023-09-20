@@ -27,7 +27,6 @@
 		618C79242AB75E490042E8CA /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618C79232AB75E490042E8CA /* TableViewCell.swift */; };
 		618C79272AB760720042E8CA /* ItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618C79252AB760720042E8CA /* ItemTableViewCell.swift */; };
 		618C79282AB760720042E8CA /* ItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 618C79262AB760720042E8CA /* ItemTableViewCell.xib */; };
-		618C792A2AB7A8120042E8CA /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618C79292AB7A8120042E8CA /* File.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,7 +49,6 @@
 		618C79232AB75E490042E8CA /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		618C79252AB760720042E8CA /* ItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTableViewCell.swift; sourceTree = "<group>"; };
 		618C79262AB760720042E8CA /* ItemTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemTableViewCell.xib; sourceTree = "<group>"; };
-		618C79292AB7A8120042E8CA /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,7 +101,6 @@
 				618C79072AB509A70042E8CA /* LaunchScreen.storyboard */,
 				618C790A2AB509A70042E8CA /* Info.plist */,
 				618C79232AB75E490042E8CA /* TableViewCell.swift */,
-				618C79292AB7A8120042E8CA /* File.swift */,
 				610D6F052AB81B89001F7776 /* UIColorHex.swift */,
 			);
 			path = Preparing;
@@ -192,7 +189,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				618C791E2AB63DDB0042E8CA /* ItemViewController.swift in Sources */,
-				618C792A2AB7A8120042E8CA /* File.swift in Sources */,
 				618C79222AB63E310042E8CA /* Item.swift in Sources */,
 				618C79112AB50A740042E8CA /* Event.swift in Sources */,
 				618C79012AB509A60042E8CA /* EventViewController.swift in Sources */,
