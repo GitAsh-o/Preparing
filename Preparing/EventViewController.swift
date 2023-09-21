@@ -15,6 +15,8 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
     let realm = try! Realm()
     var events: [Event] = []
     var selectedEvent: Event? = nil
+    
+    var indexPath: IndexPath!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,6 +48,7 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
         button.frame = CGRect(x: tableView.frame.width * 0.8, y: 0, width: tableView.frame.width * 0.2, height: (cell.frame.height))
         button.setTitle("･･･", for: .normal)
         button.addTarget(self, action: #selector(buttonTapped(_:)), for: .touchUpInside)
+        button.tag = indexPath.row
         cell.addSubview(button)
         
         return cell
@@ -105,9 +108,9 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
                     print("deleteCell")
                     if let indexPath = tableView.indexPath {
                         try! realm.write{
-                            realm.delete(events[indexPath.row])
+                            realm.delete(events[sender.tag])
                         }
-                        events.remove(at: indexPath.row)
+                        events.remove(at: sender.tag)
                         tableView.deleteRows(at: [indexPath], with: .automatic)
                         tableView.reloadData()
                     }
