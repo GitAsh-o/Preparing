@@ -76,7 +76,7 @@
         <!--New Item View Controller-->
         <scene sceneID="zZ2-3t-TFZ">
             <objects>
-                <viewController id="SMa-b7-XIT" customClass="NewItemViewController" customModule="Preparing" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NewItemView" id="SMa-b7-XIT" customClass="NewItemViewController" customModule="Preparing" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="a6R-Jj-6Mk">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -165,7 +165,7 @@
                                     <button opaque="NO" tag="1" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Smm-n6-XMp">
                                         <rect key="frame" x="0.0" y="0.0" width="53" height="44"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" image="Ellipse 29"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="red"/>
                                         <connections>
                                             <action selector="didTapNumberButton:" destination="hNd-XE-eKI" eventType="touchUpInside" id="xDw-9j-YAk"/>
                                         </connections>
@@ -259,11 +259,11 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Ellipse 29" width="30" height="30"/>
         <image name="blue" width="30" height="30"/>
         <image name="glay" width="30" height="30"/>
         <image name="green" width="30" height="30"/>
         <image name="purple" width="30" height="30"/>
+        <image name="red" width="30" height="30"/>
         <image name="yellow" width="30" height="30"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

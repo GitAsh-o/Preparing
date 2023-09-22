@@ -14,38 +14,71 @@ class NewEventViewController: UIViewController {
     
     let realm = try! Realm()
     let event = Event()
+    
+    var viewNum: Int!
+    var thisEvent: Event!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        if viewNum == 2{
+            titleTextField.text = thisEvent.title
+        }
 
         // Do any additional setup after loading the view.
     }
     
     @IBAction private func didTapNumberButton(_ sender: UIButton){
-        if sender.tag == 1{
-            event.color = "red"
-        }else if sender.tag == 2{
-            event.color = "purple"
-        }else if sender.tag == 3{
-            event.color = "blue"
-        }else if sender.tag == 4{
-            event.color = "green"
-        }else if sender.tag == 5{
-            event.color = "yellow"
-        }else if sender.tag == 6{
-            event.color = "glay"
+        if viewNum == 1{
+            if sender.tag == 1{
+                event.color = "red"
+            }else if sender.tag == 2{
+                event.color = "purple"
+            }else if sender.tag == 3{
+                event.color = "blue"
+            }else if sender.tag == 4{
+                event.color = "green"
+            }else if sender.tag == 5{
+                event.color = "yellow"
+            }else if sender.tag == 6{
+                event.color = "glay"
+            }
+        }else if viewNum == 2{
+            if sender.tag == 1{
+                thisEvent.color = "red"
+            }else if sender.tag == 2{
+                thisEvent.color = "purple"
+            }else if sender.tag == 3{
+                thisEvent.color = "blue"
+            }else if sender.tag == 4{
+                thisEvent.color = "green"
+            }else if sender.tag == 5{
+                thisEvent.color = "yellow"
+            }else if sender.tag == 6{
+                thisEvent.color = "glay"
+            }
         }
     }
     
     @IBAction func save(){
-        event.title = titleTextField.text ?? ""
-        createEvent(event: event)
-        
-        let preNC = self.presentingViewController as! UINavigationController
-        let preVC = preNC.viewControllers[preNC.viewControllers.count - 1] as! EventViewController
-        preVC.reload()
-        
-        self.dismiss(animated: true)
+        if viewNum == 1{
+            event.title = titleTextField.text ?? ""
+            createEvent(event: event)
+            
+            let preNC = self.presentingViewController as! UINavigationController
+            let preVC = preNC.viewControllers[preNC.viewControllers.count - 1] as! EventViewController
+            preVC.reload()
+            
+            self.dismiss(animated: true)
+        }else if viewNum == 2{
+            try! realm.write{
+                thisEvent.title = titleTextField.text ?? ""
+            }
+            let preNC = self.presentingViewController as! UINavigationController
+            let preVC = preNC.viewControllers[preNC.viewControllers.count - 1] as! EventViewController
+            preVC.reload()
+            
+            self.dismiss(animated: true)
+        }
     }
     
     func createEvent(event: Event){

@@ -14,6 +14,9 @@ class NewItemViewController: UIViewController {
     
     let realm = try! Realm()
     var event: Event!
+    
+    var viewNum: Int!
+    var thisItem: Item!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,12 +25,19 @@ class NewItemViewController: UIViewController {
     }
     
     @IBAction func save(){
-        let item = Item()
-        item.title = titleTextField.text ?? ""
-        item.event = event
-        createItem(item: item)
-        
-        self.dismiss(animated: true)
+        if viewNum == 1{
+            let item = Item()
+            item.title = titleTextField.text ?? ""
+            item.event = event
+            createItem(item: item)
+            
+            self.dismiss(animated: true)
+        }else if viewNum == 2{
+            try! realm.write{
+                thisItem.title = titleTextField.text ?? ""
+            }
+            self.dismiss(animated: true)
+        }
     }
     
     func createItem(item: Item){

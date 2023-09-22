@@ -8,7 +8,7 @@
 import UIKit
 import RealmSwift
 
-class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, ItemTableViewCellDelegate {
+class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet var tableView: UITableView!
     
@@ -39,7 +39,14 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as! ItemTableViewCell
         let item: Item = items[indexPath.row]
         cell.setCell(title: item.title)
-        cell.delegate = self
+        
+        let button = UIButton()
+        
+        button.frame = CGRect(x: tableView.frame.width * 0.8, y: 0, width: tableView.frame.width * 0.2, height: (cell.frame.height))
+        button.setTitle("･･･", for: .normal)
+        button.addTarget(self, action: #selector(buttonTapped(_:)), for: .touchUpInside)
+        button.tag = indexPath.row
+        cell.addSubview(button)
         
         return cell
     }
@@ -64,7 +71,52 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
         if segue.identifier == "toNewItemView" {
             let newItemViewController = segue.destination as! NewItemViewController
             newItemViewController.event = self.selectedEvent
+        } else if segue.identifier == "toNewItemView"{
+            let newItemView = segue.destination as! NewItemViewController
+            newItemView.viewNum = 1
         }
+    }
+    
+    @objc func buttonTapped(_ sender: UIButton){
+        let editMenu = UIAction(title: "編集", image: nil) { (action) in
+            print("編集")
+            let storyboard: UIStoryboard = self.storyboard!
+            let nextView = storyboard.instantiateViewController(identifier: "NewItemView") as! NewItemViewController
+            nextView.viewNum = 2
+            nextView.thisItem = self.items[sender.tag]
+            self.present(nextView, animated: true, completion: nil)
+        }
+        let deleteMenu = UIAction(title: "削除", image: nil) { (action) in
+            print("削除")
+            let alert = UIAlertController(
+                title: "イベントを削除",
+                message: "このイベントは削除されます",
+                preferredStyle: .alert
+            )
+            alert.addAction(UIAlertAction(
+                title: "削除",
+                style: .default,
+                handler: {action in
+                    print("deleteCell")
+                    try! self.realm.write{
+                        self.realm.delete(self.items[sender.tag])
+                    }
+                    self.items.remove(at: sender.tag)
+                    //tableView.deleteRows(at: [indexPath], with: .automatic)
+                    self.tableView.reloadData()
+                }
+            ))
+            alert.addAction(UIAlertAction(
+                title: "キャンセル",
+                style: .default,
+                handler: {action in
+                }
+            ))
+            self.present(alert, animated: true, completion: nil)
+        }
+        let menu = UIMenu(title: "", image: nil, identifier: nil, options: .displayInline, children: [editMenu, deleteMenu])
+        sender.menu = menu
+        sender.showsMenuAsPrimaryAction = true
     }
     
 

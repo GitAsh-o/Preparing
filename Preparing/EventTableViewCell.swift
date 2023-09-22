@@ -8,10 +8,6 @@
 import UIKit
 import RealmSwift
 
-/*protocol EventTableViewCellDelegate: AnyObject {
-    func deleteCell(in cell: EventTableViewCell)
-}*/
-
 class EventTableViewCell: UITableViewCell {
     
     let realm = try! Realm()
@@ -20,8 +16,6 @@ class EventTableViewCell: UITableViewCell {
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var backColor: UIColor!
     @IBOutlet weak var button: UIButton!
-    
-    /*weak var delegate: EventTableViewCellDelegate?*/
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -52,38 +46,5 @@ class EventTableViewCell: UITableViewCell {
         self.backgroundColor = backColor
     }
     
-    /*@IBAction func setupButton(){
-        let editMenu = UIAction(title: "編集", image: nil) { (action) in
-            print("編集")
-        }
-        let deleteMenu = UIAction(title: "削除", image: nil) { (action) in
-            print("削除")
-            let alert = UIAlertController(
-                title: "イベントを削除",
-                message: "このイベントは削除されます",
-                preferredStyle: .alert
-            )
-            alert.addAction(UIAlertAction(
-                title: "削除",
-                style: .default,
-                handler: {action in
-                    print("deleteCell")
-                    self.delegate?.deleteCell(in: self)
-                }
-            ))
-            alert.addAction(UIAlertAction(
-                title: "キャンセル",
-                style: .default,
-                handler: {action in
-                }
-            ))
-            if let viewController = self.window?.rootViewController {
-                viewController.present(alert, animated: true, completion: nil)
-            }
-        }
-        let menu = UIMenu(title: "", image: nil, identifier: nil, options: .displayInline, children: [editMenu, deleteMenu])
-        button.menu = menu
-        button.showsMenuAsPrimaryAction = true
-    }*/
 }
 

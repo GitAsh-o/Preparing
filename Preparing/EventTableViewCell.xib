@@ -17,7 +17,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D7Y-La-fAs">
-                        <rect key="frame" x="30" y="5" width="133" height="70"/>
+                        <rect key="frame" x="30.000000000000004" y="5" width="41.333333333333343" height="70"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="70" id="q10-Le-Gir"/>
                         </constraints>
@@ -25,29 +25,16 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lsx-0t-wLD">
-                        <rect key="frame" x="243" y="23.000000000000004" width="77" height="34.333333333333343"/>
-                        <state key="normal" title="Button"/>
-                        <buttonConfiguration key="configuration" style="plain" title="Button"/>
-                        <connections>
-                            <action selector="setupButton" destination="KGk-i7-Jjw" eventType="touchUpInside" id="2wn-em-GV6"/>
-                        </connections>
-                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="D7Y-La-fAs" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="30" id="3J4-lF-yom"/>
                     <constraint firstItem="D7Y-La-fAs" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="8ge-hw-gTJ"/>
-                    <constraint firstItem="Lsx-0t-wLD" firstAttribute="leading" secondItem="D7Y-La-fAs" secondAttribute="trailing" constant="80" id="Hes-xU-pyr"/>
-                    <constraint firstAttribute="trailing" secondItem="Lsx-0t-wLD" secondAttribute="trailing" id="MZc-yx-X2p"/>
                     <constraint firstItem="D7Y-La-fAs" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="PvZ-ay-Gep"/>
-                    <constraint firstItem="Lsx-0t-wLD" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Tvo-Qy-DDp"/>
                     <constraint firstAttribute="bottom" secondItem="D7Y-La-fAs" secondAttribute="bottom" constant="5" id="UDQ-J2-yl3"/>
-                    <constraint firstItem="Lsx-0t-wLD" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="243" id="V7Q-EO-bIb"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="button" destination="Lsx-0t-wLD" id="ygu-R8-RUS"/>
                 <outlet property="titleLabel" destination="D7Y-La-fAs" id="5wQ-xy-pYR"/>
             </connections>
             <point key="canvasLocation" x="201.52671755725191" y="31.690140845070424"/>

@@ -8,15 +8,14 @@
 import UIKit
 import RealmSwift
 
-class EventViewController: UIViewController, UITableViewDataSource, UITableViewDelegate/*, EventTableViewCellDelegate*/ {
+class EventViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet var tableView: UITableView!
     
     let realm = try! Realm()
     var events: [Event] = []
     var selectedEvent: Event? = nil
-    
-    var indexPath: IndexPath!
+    var eventNum: Int!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,7 +40,6 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
         let cell = tableView.dequeueReusableCell(withIdentifier: "EventCell", for: indexPath) as! EventTableViewCell
         let event: Event = events[indexPath.row]
         cell.setCell(title: event.title, color: event.color)
-        /*cell.delegate = self*/
         
         let button = UIButton()
         
@@ -63,18 +61,6 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
         return Array(realm.objects(Event.self))
     }
     
-    /*func deleteCell(in cell: EventTableViewCell) {
-        print("Cellを削除しました")
-        if let indexPath = tableView.indexPath(for: cell) {
-            try! realm.write{
-                realm.delete(events[indexPath.row])
-            }
-            events.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .automatic)
-            tableView.reloadData()
-        }
-    }*/
-    
     func reload(){
         events = readEvents()
         tableView.reloadData()
@@ -84,6 +70,9 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
         if segue.identifier == "toItemView" {
             let itemViewController = segue.destination as! ItemViewController
             itemViewController.selectedEvent = self.selectedEvent!
+        } else if segue.identifier == "toNewEventView"{
+            let newEventView = segue.destination as! NewEventViewController
+            newEventView.viewNum = 1
         }
     }
     
@@ -92,6 +81,8 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
             print("編集")
             let storyboard: UIStoryboard = self.storyboard!
             let nextView = storyboard.instantiateViewController(identifier: "NewEventView") as! NewEventViewController
+            nextView.viewNum = 2
+            nextView.thisEvent = self.events[sender.tag]
             self.present(nextView, animated: true, completion: nil)
         }
         let deleteMenu = UIAction(title: "削除", image: nil) { (action) in
@@ -106,14 +97,12 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
                 style: .default,
                 handler: {action in
                     print("deleteCell")
-                    if let indexPath = tableView.indexPath {
-                        try! realm.write{
-                            realm.delete(events[sender.tag])
-                        }
-                        events.remove(at: sender.tag)
-                        tableView.deleteRows(at: [indexPath], with: .automatic)
-                        tableView.reloadData()
+                    try! self.realm.write{
+                        self.realm.delete(self.events[sender.tag])
                     }
+                    self.events.remove(at: sender.tag)
+                    //tableView.deleteRows(at: [indexPath], with: .automatic)
+                    self.tableView.reloadData()
                 }
             ))
             alert.addAction(UIAlertAction(
