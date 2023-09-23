@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Event View Controller-->
+        <!--Choose One!-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="EventViewController" customModule="Preparing" customModuleProvider="target" sceneMemberID="viewController">
@@ -16,7 +16,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Okb-bd-XQJ">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Okb-bd-XQJ">
                                 <rect key="frame" x="0.0" y="103" width="393" height="749"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -25,7 +25,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="XaP-fm-Qv6">
+                    <navigationItem key="navigationItem" title="Choose One!" id="XaP-fm-Qv6">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="LJI-uV-cMa">
                             <connections>
                                 <segue destination="hNd-XE-eKI" kind="presentation" identifier="toNewEventView" modalPresentationStyle="automatic" id="qkm-lD-y5i"/>
@@ -44,12 +44,12 @@
         <!--Item View Controller-->
         <scene sceneID="RWF-oH-v1k">
             <objects>
-                <viewController id="G7D-hP-2Z8" customClass="ItemViewController" customModule="Preparing" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ItemView" id="G7D-hP-2Z8" customClass="ItemViewController" customModule="Preparing" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="S72-f8-gXj">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Ase-0G-3rv">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Ase-0G-3rv">
                                 <rect key="frame" x="0.0" y="103" width="393" height="749"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -61,7 +61,7 @@
                     <navigationItem key="navigationItem" id="3jj-5R-hn9">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="znU-5J-Z0D">
                             <connections>
-                                <segue destination="SMa-b7-XIT" kind="presentation" identifier="toNewItemView" modalPresentationStyle="fullScreen" id="WUO-OH-Aea"/>
+                                <segue destination="SMa-b7-XIT" kind="presentation" identifier="toNewItemView" id="WUO-OH-Aea"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -71,14 +71,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jpN-1x-bH5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1682" y="341"/>
+            <point key="canvasLocation" x="1686" y="341"/>
         </scene>
         <!--New Item View Controller-->
         <scene sceneID="zZ2-3t-TFZ">
             <objects>
                 <viewController storyboardIdentifier="NewItemView" id="SMa-b7-XIT" customClass="NewItemViewController" customModule="Preparing" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="a6R-Jj-6Mk">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What to bring...?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fRr-xw-QHW">
@@ -100,6 +100,15 @@
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="save" destination="SMa-b7-XIT" eventType="touchUpInside" id="wEV-TS-FU6"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3kL-eU-td5">
+                                <rect key="frame" x="323" y="20" width="54" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <buttonConfiguration key="configuration" style="plain" image="Close"/>
+                                <connections>
+                                    <action selector="back" destination="SMa-b7-XIT" eventType="touchUpInside" id="erj-8n-AP9"/>
+                                    <action selector="back" destination="hNd-XE-eKI" eventType="touchUpInside" id="s80-6D-Uo0"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -212,6 +221,14 @@
                                     </button>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6pt-zh-pYV">
+                                <rect key="frame" x="323" y="20" width="54" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <buttonConfiguration key="configuration" style="plain" image="Close"/>
+                                <connections>
+                                    <action selector="back" destination="hNd-XE-eKI" eventType="touchUpInside" id="Zp0-gE-CD0"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="iw3-Za-iru"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -237,7 +254,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9It-7G-F4c" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1681.679389312977" y="-345.07042253521126"/>
+            <point key="canvasLocation" x="1686" y="-345"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="fKb-Y1-JGM">
@@ -259,6 +276,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Close" width="30" height="30"/>
         <image name="blue" width="30" height="30"/>
         <image name="glay" width="30" height="30"/>
         <image name="green" width="30" height="30"/>

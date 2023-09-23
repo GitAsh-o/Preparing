@@ -20,6 +20,8 @@ class NewEventViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = UIColor(hex: "FFEED4")
+        
         if viewNum == 2{
             titleTextField.text = thisEvent.title
         }
@@ -29,6 +31,7 @@ class NewEventViewController: UIViewController {
     
     @IBAction private func didTapNumberButton(_ sender: UIButton){
         if viewNum == 1{
+            print("make")
             if sender.tag == 1{
                 event.color = "red"
             }else if sender.tag == 2{
@@ -43,18 +46,21 @@ class NewEventViewController: UIViewController {
                 event.color = "glay"
             }
         }else if viewNum == 2{
-            if sender.tag == 1{
-                thisEvent.color = "red"
-            }else if sender.tag == 2{
-                thisEvent.color = "purple"
-            }else if sender.tag == 3{
-                thisEvent.color = "blue"
-            }else if sender.tag == 4{
-                thisEvent.color = "green"
-            }else if sender.tag == 5{
-                thisEvent.color = "yellow"
-            }else if sender.tag == 6{
-                thisEvent.color = "glay"
+            print("edit")
+            try! realm.write{
+                if sender.tag == 1{
+                    thisEvent.color = "red"
+                }else if sender.tag == 2{
+                    thisEvent.color = "purple"
+                }else if sender.tag == 3{
+                    thisEvent.color = "blue"
+                }else if sender.tag == 4{
+                    thisEvent.color = "green"
+                }else if sender.tag == 5{
+                    thisEvent.color = "yellow"
+                }else if sender.tag == 6{
+                    thisEvent.color = "glay"
+                }
             }
         }
     }
@@ -85,6 +91,10 @@ class NewEventViewController: UIViewController {
         try! realm.write {
             realm.add(event)
         }
+    }
+    
+    @IBAction func back(){
+        self.dismiss(animated: true)
     }
     
 

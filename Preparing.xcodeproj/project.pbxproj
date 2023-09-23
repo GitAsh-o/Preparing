@@ -29,6 +29,19 @@
 		618C79282AB760720042E8CA /* ItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 618C79262AB760720042E8CA /* ItemTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		610D6F192ABDEC4B001F7776 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		610D6F052AB81B89001F7776 /* UIColorHex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorHex.swift; sourceTree = "<group>"; };
 		618C78F92AB509A60042E8CA /* Preparing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Preparing.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -97,11 +110,11 @@
 				618C79172AB511BB0042E8CA /* EventTableViewCell.swift */,
 				618C79262AB760720042E8CA /* ItemTableViewCell.xib */,
 				618C79252AB760720042E8CA /* ItemTableViewCell.swift */,
-				618C79052AB509A70042E8CA /* Assets.xcassets */,
-				618C79072AB509A70042E8CA /* LaunchScreen.storyboard */,
-				618C790A2AB509A70042E8CA /* Info.plist */,
-				618C79232AB75E490042E8CA /* TableViewCell.swift */,
 				610D6F052AB81B89001F7776 /* UIColorHex.swift */,
+				618C79052AB509A70042E8CA /* Assets.xcassets */,
+				618C790A2AB509A70042E8CA /* Info.plist */,
+				618C79072AB509A70042E8CA /* LaunchScreen.storyboard */,
+				618C79232AB75E490042E8CA /* TableViewCell.swift */,
 			);
 			path = Preparing;
 			sourceTree = "<group>";
@@ -116,6 +129,7 @@
 				618C78F52AB509A50042E8CA /* Sources */,
 				618C78F62AB509A50042E8CA /* Frameworks */,
 				618C78F72AB509A50042E8CA /* Resources */,
+				610D6F192ABDEC4B001F7776 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);

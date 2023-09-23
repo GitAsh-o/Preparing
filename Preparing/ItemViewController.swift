@@ -18,6 +18,8 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = UIColor(hex: "FFEED4")
+        tableView.backgroundColor = UIColor(hex: "FFEED4")
     
         tableView.dataSource = self
         tableView.delegate = self
@@ -43,7 +45,8 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let button = UIButton()
         
         button.frame = CGRect(x: tableView.frame.width * 0.8, y: 0, width: tableView.frame.width * 0.2, height: (cell.frame.height))
-        button.setTitle("･･･", for: .normal)
+        button.setTitle("･･･",for: .normal)
+        button.setTitleColor(UIColor.black, for: .normal)
         button.addTarget(self, action: #selector(buttonTapped(_:)), for: .touchUpInside)
         button.tag = indexPath.row
         cell.addSubview(button)
@@ -55,25 +58,16 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
         return Array(realm.objects(Item.self).filter("event == %@", selectedEvent!))
     }
     
-    func deleteCell(in cell: ItemTableViewCell) {
-        print("Cellを削除しました")
-        if let indexPath = tableView.indexPath(for: cell) {
-            try! realm.write{
-                realm.delete(items[indexPath.row])
-            }
-            items.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .automatic)
-            tableView.reloadData()
-        }
+    func reload(){
+        items = readItems()
+        tableView.reloadData()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toNewItemView" {
             let newItemViewController = segue.destination as! NewItemViewController
             newItemViewController.event = self.selectedEvent
-        } else if segue.identifier == "toNewItemView"{
-            let newItemView = segue.destination as! NewItemViewController
-            newItemView.viewNum = 1
+            newItemViewController.viewNum = 1
         }
     }
     
@@ -118,7 +112,7 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
         sender.menu = menu
         sender.showsMenuAsPrimaryAction = true
     }
-    
+
 
     /*
     // MARK: - Navigation

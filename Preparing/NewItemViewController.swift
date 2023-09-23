@@ -20,6 +20,11 @@ class NewItemViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = UIColor(hex: "FFEED4")
+        
+        if viewNum == 2{
+            titleTextField.text = thisItem.title
+        }
 
         // Do any additional setup after loading the view.
     }
@@ -31,11 +36,19 @@ class NewItemViewController: UIViewController {
             item.event = event
             createItem(item: item)
             
+            let preNC = self.presentingViewController as! UINavigationController
+            let preVC = preNC.viewControllers[preNC.viewControllers.count - 1] as! ItemViewController
+            preVC.reload()
+            
             self.dismiss(animated: true)
         }else if viewNum == 2{
             try! realm.write{
                 thisItem.title = titleTextField.text ?? ""
             }
+            let preNC = self.presentingViewController as! UINavigationController
+            let preVC = preNC.viewControllers[preNC.viewControllers.count - 1] as! ItemViewController
+            preVC.reload()
+            
             self.dismiss(animated: true)
         }
     }
@@ -44,6 +57,10 @@ class NewItemViewController: UIViewController {
         try! realm.write{
             realm.add(item)
         }
+    }
+    
+    @IBAction func back(){
+        self.dismiss(animated: true)
     }
     
 

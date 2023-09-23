@@ -7,6 +7,7 @@
 
 import UIKit
 import RealmSwift
+import SwiftUI
 
 class EventViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
@@ -19,6 +20,9 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = UIColor(hex: "FFEED4")
+        tableView.backgroundColor = UIColor(hex: "FFEED4")
+        
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(UINib(nibName: "EventTableViewCell", bundle: nil), forCellReuseIdentifier: "EventCell")
@@ -45,6 +49,7 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         button.frame = CGRect(x: tableView.frame.width * 0.8, y: 0, width: tableView.frame.width * 0.2, height: (cell.frame.height))
         button.setTitle("･･･", for: .normal)
+        button.setTitleColor(UIColor.black, for: .normal)
         button.addTarget(self, action: #selector(buttonTapped(_:)), for: .touchUpInside)
         button.tag = indexPath.row
         cell.addSubview(button)
@@ -77,19 +82,22 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     @objc func buttonTapped(_ sender: UIButton){
+        let storyboard: UIStoryboard = self.storyboard!
+        let nextView = storyboard.instantiateViewController(identifier: "NewEventView") as! NewEventViewController
         let editMenu = UIAction(title: "編集", image: nil) { (action) in
             print("編集")
-            let storyboard: UIStoryboard = self.storyboard!
-            let nextView = storyboard.instantiateViewController(identifier: "NewEventView") as! NewEventViewController
             nextView.viewNum = 2
             nextView.thisEvent = self.events[sender.tag]
             self.present(nextView, animated: true, completion: nil)
+        }
+        let shareMenu = UIAction(title:"共有", image: nil) { (action) in
+            print("共有")
         }
         let deleteMenu = UIAction(title: "削除", image: nil) { (action) in
             print("削除")
             let alert = UIAlertController(
                 title: "イベントを削除",
-                message: "このイベントは削除されます",
+                message: "カバンの中身も全て削除されます",
                 preferredStyle: .alert
             )
             alert.addAction(UIAlertAction(
@@ -101,7 +109,6 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
                         self.realm.delete(self.events[sender.tag])
                     }
                     self.events.remove(at: sender.tag)
-                    //tableView.deleteRows(at: [indexPath], with: .automatic)
                     self.tableView.reloadData()
                 }
             ))
@@ -113,8 +120,39 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
             ))
             self.present(alert, animated: true, completion: nil)
         }
-        let menu = UIMenu(title: "", image: nil, identifier: nil, options: .displayInline, children: [editMenu, deleteMenu])
+        let menu = UIMenu(title: "", image: nil, identifier: nil, options: .displayInline, children: [editMenu, shareMenu, deleteMenu])
         sender.menu = menu
         sender.showsMenuAsPrimaryAction = true
+    }
+}
+
+struct ActivityView: UIViewControllerRepresentable {
+
+    let activityItems: [Any]
+    let applicationActivities: [UIActivity]?
+
+    func makeUIViewController(context: Context) -> UIActivityViewController {
+        let controller = UIActivityViewController(activityItems: activityItems,
+                                                  applicationActivities: applicationActivities)
+        return controller
+    }
+
+    func updateUIViewController(_ uiViewController: UIActivityViewController, context: Context) {
+    }
+}
+
+struct ContentView: View {
+    
+    @State private var isPresentActivityController = false
+    
+    var body: some View {
+        Button("編集") {
+            isPresentActivityController = true
+        }
+        .sheet(isPresented: $isPresentActivityController) {
+            ActivityView(activityItems: ["シェア"],
+                         applicationActivities: nil)
+            .presentationDetents([.medium, .large])
+        }
     }
 }
