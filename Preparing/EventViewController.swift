@@ -18,6 +18,7 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
     var events: [Event] = []
     var selectedEvent: Event? = nil
     var eventNum: Int!
+    var shareArray: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -94,6 +95,7 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
         if segue.identifier == "toItemView" {
             let itemViewController = segue.destination as! ItemViewController
             itemViewController.selectedEvent = self.selectedEvent!
+            itemViewController.shareArray = self.shareArray
         } else if segue.identifier == "toNewEventView"{
             let newEventView = segue.destination as! NewEventViewController
             newEventView.viewNum = 1
@@ -116,9 +118,8 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
         let shareMenu = UIAction(title:"共有", image: nil) { (action) in
             print("共有")
             
-            let shareText = "Apple - Apple Watch"
-            let shareWebsite = NSURL(string: "https://www.apple.com/jp/watch/")!
-            let activityItems = [shareText, shareWebsite] as [Any]
+            let shareText = "\(self.shareArray)"
+            let activityItems = [shareText] as [Any]
             let activityVC = UIActivityViewController(activityItems: activityItems, applicationActivities: nil)
             self.present(activityVC, animated: true, completion: nil)
         }
@@ -154,3 +155,4 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
         sender.showsMenuAsPrimaryAction = true
     }
 }
+

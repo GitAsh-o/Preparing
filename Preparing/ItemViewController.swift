@@ -20,6 +20,8 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
     var checked: UIImage = UIImage(named: "checkbox1")!
     var checkCount: Int = 0
     var checkArray: [Bool] = []
+    var shareArray: [String] = []
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +38,7 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
     override func viewWillAppear(_ animated: Bool) {
         items = readItems()
         tableView.reloadData()
+        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -51,6 +54,7 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let item: Item = items[indexPath.row]
         cell.setCell(title: item.title)
         
+        shareArray.append("\(String(describing: cell.titleLabel.text))")
         checkArray += [false]
         
         let button = UIButton()
