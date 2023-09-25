@@ -16,6 +16,7 @@ class EventTableViewCell: UITableViewCell {
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var backColor: UIColor!
     @IBOutlet weak var button: UIButton!
+    @IBOutlet var mainBackground: UIView!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -31,19 +32,21 @@ class EventTableViewCell: UITableViewCell {
     func setCell(title: String, color: String){
         titleLabel.text = title
         if color == "red"{
-            backColor = UIColor(hex: "EFC0C0")
+            mainBackground.backgroundColor = UIColor(hex: "EFC0C0")
         }else if color == "purple"{
-            backColor = UIColor(hex: "DDBCE9")
+            mainBackground.backgroundColor = UIColor(hex: "DDBCE9")
         }else if color == "blue"{
-            backColor = UIColor(hex: "B6C0E7")
+            mainBackground.backgroundColor = UIColor(hex: "B6C0E7")
         }else if color == "green"{
-            backColor = UIColor(hex: "C4E7B7")
+            mainBackground.backgroundColor = UIColor(hex: "C4E7B7")
         }else if color == "yellow"{
-            backColor = UIColor(hex: "EBEEBC")
+            mainBackground.backgroundColor = UIColor(hex: "EBEEBC")
         }else if color == "glay"{
-            backColor = UIColor(hex: "D3D3D3")
+            mainBackground.backgroundColor = UIColor(hex: "D3D3D3")
         }
-        self.backgroundColor = backColor
+        self.backgroundColor = UIColor(hex: "FFEED4")
+        mainBackground.layer.borderWidth = 1.0
+        mainBackground.layer.borderColor = UIColor(hex: "606060").cgColor
     }
     
 }

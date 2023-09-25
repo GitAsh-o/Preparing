@@ -27,6 +27,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Choose One!" id="XaP-fm-Qv6">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="LJI-uV-cMa">
+                            <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <segue destination="hNd-XE-eKI" kind="presentation" identifier="toNewEventView" modalPresentationStyle="automatic" id="qkm-lD-y5i"/>
                             </connections>
@@ -39,7 +40,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="902" y="-2"/>
+            <point key="canvasLocation" x="901.52671755725191" y="-2.1126760563380285"/>
         </scene>
         <!--Item View Controller-->
         <scene sceneID="RWF-oH-v1k">
@@ -58,8 +59,9 @@
                         <viewLayoutGuide key="safeArea" id="Kgv-JA-RnO"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="3jj-5R-hn9">
+                    <navigationItem key="navigationItem" leftItemsSupplementBackButton="YES" id="3jj-5R-hn9">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="znU-5J-Z0D">
+                            <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <segue destination="SMa-b7-XIT" kind="presentation" identifier="toNewItemView" id="WUO-OH-Aea"/>
                             </connections>
@@ -235,6 +237,7 @@
                         <constraints>
                             <constraint firstItem="icc-Ap-QkN" firstAttribute="leading" secondItem="iw3-Za-iru" secondAttribute="leading" constant="30" id="8qa-LS-8MQ"/>
                             <constraint firstItem="iw3-Za-iru" firstAttribute="trailing" secondItem="Uo0-n7-cad" secondAttribute="trailing" constant="30" id="Fj5-q4-htP"/>
+                            <constraint firstItem="iw3-Za-iru" firstAttribute="trailing" secondItem="Vwn-MW-tbp" secondAttribute="trailing" constant="146.66999999999999" id="H5S-kw-1j6"/>
                             <constraint firstItem="m7E-AI-HJg" firstAttribute="top" secondItem="Uo0-n7-cad" secondAttribute="bottom" constant="200" id="H74-xb-GNx"/>
                             <constraint firstItem="Uo0-n7-cad" firstAttribute="top" secondItem="Vwn-MW-tbp" secondAttribute="bottom" constant="10" id="J35-OO-M3r"/>
                             <constraint firstItem="Vwn-MW-tbp" firstAttribute="leading" secondItem="iw3-Za-iru" secondAttribute="leading" constant="30" id="PAT-uQ-Zac"/>

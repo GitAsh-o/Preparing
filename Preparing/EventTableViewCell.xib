@@ -4,6 +4,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -16,6 +17,11 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sUz-Ij-Zsy">
+                        <rect key="frame" x="12" y="6" width="296" height="68"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D7Y-La-fAs">
                         <rect key="frame" x="30.000000000000004" y="5" width="41.333333333333343" height="70"/>
                         <constraints>
@@ -29,15 +35,25 @@
                 <constraints>
                     <constraint firstItem="D7Y-La-fAs" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="30" id="3J4-lF-yom"/>
                     <constraint firstItem="D7Y-La-fAs" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="8ge-hw-gTJ"/>
+                    <constraint firstItem="sUz-Ij-Zsy" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="P3a-fB-l0A"/>
                     <constraint firstItem="D7Y-La-fAs" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="PvZ-ay-Gep"/>
+                    <constraint firstItem="sUz-Ij-Zsy" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="6" id="Qfh-Ig-Jbj"/>
+                    <constraint firstAttribute="bottom" secondItem="sUz-Ij-Zsy" secondAttribute="bottom" constant="6" id="UCW-Jf-1gM"/>
                     <constraint firstAttribute="bottom" secondItem="D7Y-La-fAs" secondAttribute="bottom" constant="5" id="UDQ-J2-yl3"/>
+                    <constraint firstAttribute="trailing" secondItem="sUz-Ij-Zsy" secondAttribute="trailing" constant="12" id="XYo-d4-8dC"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="mainBackground" destination="sUz-Ij-Zsy" id="4ok-pM-arN"/>
                 <outlet property="titleLabel" destination="D7Y-La-fAs" id="5wQ-xy-pYR"/>
             </connections>
             <point key="canvasLocation" x="201.52671755725191" y="25.35211267605634"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

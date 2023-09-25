@@ -12,12 +12,13 @@ import SwiftUI
 class EventViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet var tableView: UITableView!
+    @IBOutlet var collectionView: UICollectionView!
     
     let realm = try! Realm()
     var events: [Event] = []
     var selectedEvent: Event? = nil
     var eventNum: Int!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(hex: "FFEED4")
@@ -54,12 +55,29 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
         button.tag = indexPath.row
         cell.addSubview(button)
         
+        cell.mainBackground.layer.cornerRadius = 8
+        cell.mainBackground.layer.masksToBounds = true
+        
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
         selectedEvent = events[indexPath.row]
         self.performSegue(withIdentifier: "toItemView", sender: nil)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 8
+    }
+        
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let marginView = UIView()
+        marginView.backgroundColor = .clear
+        return marginView
+    }
+        
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return .leastNonzeroMagnitude
     }
     
     func readEvents() -> [Event]{
@@ -81,6 +99,10 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
         }
     }
     
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+    
     @objc func buttonTapped(_ sender: UIButton){
         let storyboard: UIStoryboard = self.storyboard!
         let nextView = storyboard.instantiateViewController(identifier: "NewEventView") as! NewEventViewController
@@ -92,6 +114,12 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
         }
         let shareMenu = UIAction(title:"共有", image: nil) { (action) in
             print("共有")
+            
+            let shareText = "Apple - Apple Watch"
+            let shareWebsite = NSURL(string: "https://www.apple.com/jp/watch/")!
+            let activityItems = [shareText, shareWebsite] as [Any]
+            let activityVC = UIActivityViewController(activityItems: activityItems, applicationActivities: nil)
+            self.present(activityVC, animated: true, completion: nil)
         }
         let deleteMenu = UIAction(title: "削除", image: nil) { (action) in
             print("削除")
@@ -141,18 +169,3 @@ struct ActivityView: UIViewControllerRepresentable {
     }
 }
 
-struct ContentView: View {
-    
-    @State private var isPresentActivityController = false
-    
-    var body: some View {
-        Button("編集") {
-            isPresentActivityController = true
-        }
-        .sheet(isPresented: $isPresentActivityController) {
-            ActivityView(activityItems: ["シェア"],
-                         applicationActivities: nil)
-            .presentationDetents([.medium, .large])
-        }
-    }
-}

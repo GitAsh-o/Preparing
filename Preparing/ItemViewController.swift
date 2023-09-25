@@ -15,6 +15,13 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
     let realm = try! Realm()
     var items: [Item] = []
     var selectedEvent: Event!
+    
+    var unchecked: UIImage = UIImage(named: "checkbox")!
+    var checked: UIImage = UIImage(named: "checkbox1")!
+    var checkCount: Int = 0
+    var flg: Bool = false
+    var checkArray: [Bool] = []
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,14 +49,24 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let item: Item = items[indexPath.row]
         cell.setCell(title: item.title)
         
+        checkArray += [false]
+        
         let button = UIButton()
+        let button2 = UIButton()
         
         button.frame = CGRect(x: tableView.frame.width * 0.8, y: 0, width: tableView.frame.width * 0.2, height: (cell.frame.height))
         button.setTitle("･･･",for: .normal)
         button.setTitleColor(UIColor.black, for: .normal)
         button.addTarget(self, action: #selector(buttonTapped(_:)), for: .touchUpInside)
         button.tag = indexPath.row
+        
+        button2.frame = CGRect(x: tableView.frame.width * 0.05, y: 10, width: 30, height: 30)
+        button2.setImage(unchecked, for: .normal)
+        button2.addTarget(self, action: #selector(button2Tapped(_:)), for: .touchUpInside)
+        button2.tag = indexPath.row
+        
         cell.addSubview(button)
+        cell.addSubview(button2)
         
         return cell
     }
@@ -111,6 +128,32 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let menu = UIMenu(title: "", image: nil, identifier: nil, options: .displayInline, children: [editMenu, deleteMenu])
         sender.menu = menu
         sender.showsMenuAsPrimaryAction = true
+    }
+    
+    @objc func button2Tapped(_ sender: UIButton){
+        if checkArray[sender.tag] == false{
+            checkArray[sender.tag] = true
+            sender.setImage(checked, for: .normal)
+            print(checkArray[sender.tag])
+            if checkArray.allSatisfy({ $0 == true}) == true{
+                print("allChecked")
+                let alert = UIAlertController(
+                    title: "You are ready!",
+                    message: "Let's go!",
+                    preferredStyle: .alert
+                )
+                alert.addAction(UIAlertAction(
+                    title: "OK",
+                    style: .default,
+                    handler: {action in
+                    }
+                ))
+                present(alert, animated: true, completion: nil)
+            }
+        } else if checkArray[sender.tag] == true{
+            checkArray[sender.tag] = false
+            sender.setImage(unchecked, for: .normal)
+        }
     }
 
 
