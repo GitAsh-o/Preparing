@@ -26,7 +26,6 @@
 		618C79222AB63E310042E8CA /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618C79212AB63E310042E8CA /* Item.swift */; };
 		618C79272AB760720042E8CA /* ItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618C79252AB760720042E8CA /* ItemTableViewCell.swift */; };
 		618C79282AB760720042E8CA /* ItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 618C79262AB760720042E8CA /* ItemTableViewCell.xib */; };
-		619C3E1E2ABFB8AE0082308F /* ShareActivityItemSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619C3E1D2ABFB8AE0082308F /* ShareActivityItemSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -61,7 +60,6 @@
 		618C79212AB63E310042E8CA /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		618C79252AB760720042E8CA /* ItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTableViewCell.swift; sourceTree = "<group>"; };
 		618C79262AB760720042E8CA /* ItemTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemTableViewCell.xib; sourceTree = "<group>"; };
-		619C3E1D2ABFB8AE0082308F /* ShareActivityItemSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareActivityItemSource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,7 +112,6 @@
 				618C79052AB509A70042E8CA /* Assets.xcassets */,
 				618C790A2AB509A70042E8CA /* Info.plist */,
 				618C79072AB509A70042E8CA /* LaunchScreen.storyboard */,
-				619C3E1D2ABFB8AE0082308F /* ShareActivityItemSource.swift */,
 			);
 			path = Preparing;
 			sourceTree = "<group>";
@@ -210,7 +207,6 @@
 				618C79192AB511BB0042E8CA /* EventTableViewCell.swift in Sources */,
 				618C791C2AB51B480042E8CA /* NewEventViewController.swift in Sources */,
 				618C79202AB63E070042E8CA /* NewItemViewController.swift in Sources */,
-				619C3E1E2ABFB8AE0082308F /* ShareActivityItemSource.swift in Sources */,
 				610D6F062AB81B89001F7776 /* UIColorHex.swift in Sources */,
 				618C79272AB760720042E8CA /* ItemTableViewCell.swift in Sources */,
 				618C78FF2AB509A60042E8CA /* SceneDelegate.swift in Sources */,

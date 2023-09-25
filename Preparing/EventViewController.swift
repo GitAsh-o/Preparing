@@ -64,6 +64,7 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
         selectedEvent = events[indexPath.row]
         self.performSegue(withIdentifier: "toItemView", sender: nil)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -153,19 +154,3 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
         sender.showsMenuAsPrimaryAction = true
     }
 }
-
-struct ActivityView: UIViewControllerRepresentable {
-
-    let activityItems: [Any]
-    let applicationActivities: [UIActivity]?
-
-    func makeUIViewController(context: Context) -> UIActivityViewController {
-        let controller = UIActivityViewController(activityItems: activityItems,
-                                                  applicationActivities: applicationActivities)
-        return controller
-    }
-
-    func updateUIViewController(_ uiViewController: UIActivityViewController, context: Context) {
-    }
-}
-

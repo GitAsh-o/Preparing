@@ -19,10 +19,8 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
     var unchecked: UIImage = UIImage(named: "checkbox")!
     var checked: UIImage = UIImage(named: "checkbox1")!
     var checkCount: Int = 0
-    var flg: Bool = false
     var checkArray: [Bool] = []
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(hex: "FFEED4")
@@ -42,6 +40,10 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return items.count
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -113,8 +115,8 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
                         self.realm.delete(self.items[sender.tag])
                     }
                     self.items.remove(at: sender.tag)
-                    //tableView.deleteRows(at: [indexPath], with: .automatic)
-                    self.tableView.reloadData()
+                    self.checkArray.remove(at: sender.tag)
+                    self.reload()
                 }
             ))
             alert.addAction(UIAlertAction(
@@ -135,7 +137,7 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
             checkArray[sender.tag] = true
             sender.setImage(checked, for: .normal)
             print(checkArray[sender.tag])
-            if checkArray.allSatisfy({ $0 == true}) == true{
+            if checkArray.allSatisfy({$0 == true}) == true{
                 print("allChecked")
                 let alert = UIAlertController(
                     title: "You are ready!",
