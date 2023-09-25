@@ -26,7 +26,7 @@ class ItemTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func setCell(title: String){
+    func setCell(title: String, isChecked: Bool){
         titleLabel.text = title
         self.backgroundColor = UIColor(hex: "FFEED4")
     }

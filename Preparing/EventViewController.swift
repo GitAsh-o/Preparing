@@ -46,6 +46,7 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
         let cell = tableView.dequeueReusableCell(withIdentifier: "EventCell", for: indexPath) as! EventTableViewCell
         let event: Event = events[indexPath.row]
         cell.setCell(title: event.title, color: event.color)
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
         
         let button = UIButton()
         

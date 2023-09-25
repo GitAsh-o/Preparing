@@ -11,4 +11,5 @@ import RealmSwift
 class Item: Object{
     @Persisted var title: String = ""
     @Persisted var event: Event!
+    @Persisted var isChecked: Bool!
 }

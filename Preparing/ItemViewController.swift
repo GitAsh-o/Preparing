@@ -38,6 +38,7 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
     override func viewWillAppear(_ animated: Bool) {
         items = readItems()
         tableView.reloadData()
+        shareArray = []
         
     }
     
@@ -52,7 +53,8 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as! ItemTableViewCell
         let item: Item = items[indexPath.row]
-        cell.setCell(title: item.title)
+        cell.setCell(title: item.title, isChecked: false)
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
         
         shareArray.append("\(String(describing: cell.titleLabel.text))")
         checkArray += [false]
@@ -140,7 +142,6 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
         if checkArray[sender.tag] == false{
             checkArray[sender.tag] = true
             sender.setImage(checked, for: .normal)
-            print(checkArray[sender.tag])
             if checkArray.allSatisfy({$0 == true}) == true{
                 print("allChecked")
                 let alert = UIAlertController(
@@ -156,13 +157,13 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 ))
                 present(alert, animated: true, completion: nil)
             }
-        } else if checkArray[sender.tag] == true{
+        } else if checkArray[sender.tag] == true {
             checkArray[sender.tag] = false
             sender.setImage(unchecked, for: .normal)
         }
     }
-
-
+    
+    
     /*
     // MARK: - Navigation
 
