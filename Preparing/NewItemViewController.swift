@@ -25,7 +25,6 @@ class NewItemViewController: UIViewController {
         if viewNum == 2{
             titleTextField.text = thisItem.title
         }
-
         // Do any additional setup after loading the view.
     }
     
@@ -39,6 +38,7 @@ class NewItemViewController: UIViewController {
             let preNC = self.presentingViewController as! UINavigationController
             let preVC = preNC.viewControllers[preNC.viewControllers.count - 1] as! ItemViewController
             preVC.reload()
+            preVC.checkArray = []
             
             self.dismiss(animated: true)
         }else if viewNum == 2{
@@ -48,6 +48,7 @@ class NewItemViewController: UIViewController {
             let preNC = self.presentingViewController as! UINavigationController
             let preVC = preNC.viewControllers[preNC.viewControllers.count - 1] as! ItemViewController
             preVC.reload()
+            preVC.checkArray.removeAll()
             
             self.dismiss(animated: true)
         }

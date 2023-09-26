@@ -24,7 +24,6 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
         super.viewDidLoad()
         view.backgroundColor = UIColor(hex: "FFEED4")
         tableView.backgroundColor = UIColor(hex: "FFEED4")
-        
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(UINib(nibName: "EventTableViewCell", bundle: nil), forCellReuseIdentifier: "EventCell")
@@ -39,7 +38,6 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return events.count
-        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -72,13 +70,13 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 8
     }
-        
+    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let marginView = UIView()
         marginView.backgroundColor = .clear
         return marginView
     }
-        
+    
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return .leastNonzeroMagnitude
     }
@@ -106,6 +104,8 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
+    
     
     @objc func buttonTapped(_ sender: UIButton){
         let storyboard: UIStoryboard = self.storyboard!
