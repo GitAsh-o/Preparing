@@ -95,11 +95,9 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kKM-fE-PzP">
-                                <rect key="frame" x="164" y="365" width="65" height="38"/>
+                                <rect key="frame" x="118" y="365" width="157" height="72"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="save">
-                                    <fontDescription key="titleFontDescription" type="system" pointSize="20"/>
-                                </buttonConfiguration>
+                                <buttonConfiguration key="configuration" style="plain" image="保存"/>
                                 <connections>
                                     <action selector="save" destination="SMa-b7-XIT" eventType="touchUpInside" id="wEV-TS-FU6"/>
                                 </connections>
@@ -161,11 +159,9 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m7E-AI-HJg">
-                                <rect key="frame" x="164.33333333333334" y="473.66666666666669" width="64.333333333333343" height="38"/>
+                                <rect key="frame" x="118" y="473.66666666666669" width="157" height="72.000000000000057"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="save">
-                                    <fontDescription key="titleFontDescription" type="system" pointSize="20"/>
-                                </buttonConfiguration>
+                                <buttonConfiguration key="configuration" style="plain" image="保存"/>
                                 <connections>
                                     <action selector="save" destination="hNd-XE-eKI" eventType="touchUpInside" id="Psb-o1-10V"/>
                                 </connections>
@@ -286,6 +282,7 @@
         <image name="purple" width="30" height="30"/>
         <image name="red" width="30" height="30"/>
         <image name="yellow" width="30" height="30"/>
+        <image name="保存" width="133" height="58"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -16,7 +16,6 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     let realm = try! Realm()
     var events: [Event] = []
-    var items: [Item] = []
     var selectedEvent: Event? = nil
     var eventNum: Int!
     var shareArray: [String] = []
@@ -35,8 +34,6 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
     override func viewWillAppear(_ animated: Bool) {
         events = readEvents()
         tableView.reloadData()
-        let itemView = storyboard?.instantiateViewController(identifier: "ItemView") as! ItemViewController
-        self.items = itemView.items
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -118,8 +115,8 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
         }
         let shareMenu = UIAction(title:"共有", image: nil) { [self] (action) in
             print("共有")
-            print(self.realm.objects(Item.self).filter("event == %@", self.events[sender.tag]))
-            self.items.forEach{ item in
+            let itemA = self.realm.objects(Item.self).filter("event == %@", self.events[sender.tag])
+            itemA.forEach{ item in
                 self.shareArray.append(item.title)
             }
             print(self.shareArray)
