@@ -94,7 +94,6 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
         if segue.identifier == "toItemView" {
             let itemViewController = segue.destination as! ItemViewController
             itemViewController.selectedEvent = self.selectedEvent!
-            itemViewController.shareArray = self.shareArray
         } else if segue.identifier == "toNewEventView"{
             let newEventView = segue.destination as! NewEventViewController
             newEventView.viewNum = 1
@@ -105,20 +104,20 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
         super.didReceiveMemoryWarning()
     }
     
-    
-    
     @objc func buttonTapped(_ sender: UIButton){
         let storyboard: UIStoryboard = self.storyboard!
-        let nextView = storyboard.instantiateViewController(identifier: "NewEventView") as! NewEventViewController
         let editMenu = UIAction(title: "編集", image: nil) { (action) in
             print("編集")
+            let nextView = storyboard.instantiateViewController(identifier: "NewEventView") as! NewEventViewController
             nextView.viewNum = 2
             nextView.thisEvent = self.events[sender.tag]
             self.present(nextView, animated: true, completion: nil)
         }
         let shareMenu = UIAction(title:"共有", image: nil) { (action) in
             print("共有")
-            
+            print(self.shareArray)
+            let itemView = storyboard.instantiateViewController(identifier: "ItemView") as! ItemViewController
+            self.shareArray = itemView.shareArray
             let shareText = "\(self.shareArray)"
             let activityItems = [shareText] as [Any]
             let activityVC = UIActivityViewController(activityItems: activityItems, applicationActivities: nil)

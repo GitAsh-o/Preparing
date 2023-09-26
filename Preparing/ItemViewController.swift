@@ -33,7 +33,7 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
         navigationItem.title = selectedEvent.title
         
         let button = UIButton()
-        button.frame = CGRect(x: 250, y: 600, width: 100,height: 100)
+        button.frame = CGRect(x: 275, y: 625, width: 100,height: 100)
         button.setImage(UIImage(named: "reset"), for: .normal)
         button.addTarget(self, action: #selector(reset), for: .touchUpInside)
         tableView.addSubview(button)
@@ -60,7 +60,7 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
         cell.setCell(title: item.title)
         cell.selectionStyle = UITableViewCell.SelectionStyle.none
         
-        shareArray.append("\(String(describing: cell.titleLabel.text))")
+        shareArray.append("\(item.title)")
         checkArray += [false]
         
         let button = UIButton()
@@ -103,6 +103,7 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @objc func reset(){
         checkArray.removeAll()
         tableView.reloadData()
+        print(shareArray)
     }
     
     @objc func buttonTapped(_ sender: UIButton){
