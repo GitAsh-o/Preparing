@@ -20,7 +20,6 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
     var checked: UIImage = UIImage(named: "checkbox1")!
     var checkCount: Int = 0
     var checkArray: [Bool] = []
-    var shareArray: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,7 +59,6 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
         cell.setCell(title: item.title)
         cell.selectionStyle = UITableViewCell.SelectionStyle.none
         
-        shareArray.append("\(item.title)")
         checkArray += [false]
         
         let button = UIButton()
@@ -103,7 +101,6 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @objc func reset(){
         checkArray.removeAll()
         tableView.reloadData()
-        print(shareArray)
     }
     
     @objc func buttonTapped(_ sender: UIButton){

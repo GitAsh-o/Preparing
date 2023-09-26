@@ -16,6 +16,7 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     let realm = try! Realm()
     var events: [Event] = []
+    var items: [Item] = []
     var selectedEvent: Event? = nil
     var eventNum: Int!
     var shareArray: [String] = []
@@ -34,6 +35,8 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
     override func viewWillAppear(_ animated: Bool) {
         events = readEvents()
         tableView.reloadData()
+        let itemView = storyboard?.instantiateViewController(identifier: "ItemView") as! ItemViewController
+        self.items = itemView.items
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -51,8 +54,8 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
         button.frame = CGRect(x: tableView.frame.width * 0.8, y: 0, width: tableView.frame.width * 0.2, height: (cell.frame.height))
         button.setTitle("･･･", for: .normal)
         button.setTitleColor(UIColor.black, for: .normal)
-        button.addTarget(self, action: #selector(buttonTapped(_:)), for: .touchUpInside)
         button.tag = indexPath.row
+        button.addTarget(self, action: #selector(buttonTapped(_:)), for: .touchUpInside)
         cell.addSubview(button)
         
         cell.mainBackground.layer.cornerRadius = 8
@@ -113,11 +116,13 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
             nextView.thisEvent = self.events[sender.tag]
             self.present(nextView, animated: true, completion: nil)
         }
-        let shareMenu = UIAction(title:"共有", image: nil) { (action) in
+        let shareMenu = UIAction(title:"共有", image: nil) { [self] (action) in
             print("共有")
+            print(self.realm.objects(Item.self).filter("event == %@", self.events[sender.tag]))
+            self.items.forEach{ item in
+                self.shareArray.append(item.title)
+            }
             print(self.shareArray)
-            let itemView = storyboard.instantiateViewController(identifier: "ItemView") as! ItemViewController
-            self.shareArray = itemView.shareArray
             let shareText = "\(self.shareArray)"
             let activityItems = [shareText] as [Any]
             let activityVC = UIActivityViewController(activityItems: activityItems, applicationActivities: nil)
