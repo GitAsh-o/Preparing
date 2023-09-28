@@ -8,7 +8,7 @@
 import UIKit
 import RealmSwift
 
-class NewItemViewController: UIViewController {
+class NewItemViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet var titleTextField: UITextField!
     
@@ -29,28 +29,30 @@ class NewItemViewController: UIViewController {
     }
     
     @IBAction func save(){
-        if viewNum == 1{
-            let item = Item()
-            item.title = titleTextField.text ?? ""
-            item.event = event
-            createItem(item: item)
-            
-            let preNC = self.presentingViewController as! UINavigationController
-            let preVC = preNC.viewControllers[preNC.viewControllers.count - 1] as! ItemViewController
-            preVC.reload()
-            preVC.checkArray = []
-            
-            self.dismiss(animated: true)
-        }else if viewNum == 2{
-            try! realm.write{
-                thisItem.title = titleTextField.text ?? ""
+        if titleTextField.text?.isEmpty == false{
+            if viewNum == 1{
+                let item = Item()
+                item.title = titleTextField.text ?? ""
+                item.event = event
+                createItem(item: item)
+                
+                let preNC = self.presentingViewController as! UINavigationController
+                let preVC = preNC.viewControllers[preNC.viewControllers.count - 1] as! ItemViewController
+                preVC.reload()
+                preVC.checkArray = []
+                
+                self.dismiss(animated: true)
+            }else if viewNum == 2{
+                try! realm.write{
+                    thisItem.title = titleTextField.text ?? ""
+                }
+                let preNC = self.presentingViewController as! UINavigationController
+                let preVC = preNC.viewControllers[preNC.viewControllers.count - 1] as! ItemViewController
+                preVC.reload()
+                preVC.checkArray.removeAll()
+                
+                self.dismiss(animated: true)
             }
-            let preNC = self.presentingViewController as! UINavigationController
-            let preVC = preNC.viewControllers[preNC.viewControllers.count - 1] as! ItemViewController
-            preVC.reload()
-            preVC.checkArray.removeAll()
-            
-            self.dismiss(animated: true)
         }
     }
     
@@ -58,6 +60,11 @@ class NewItemViewController: UIViewController {
         try! realm.write{
             realm.add(item)
         }
+    }
+    
+    func textFieldShouldReturn(_ titleTextField: UITextField) -> Bool {
+            titleTextField.resignFirstResponder()
+            return true
     }
     
     @IBAction func back(){

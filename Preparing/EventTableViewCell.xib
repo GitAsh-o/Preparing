@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -23,11 +24,11 @@
                         <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D7Y-La-fAs">
-                        <rect key="frame" x="30.000000000000004" y="5" width="41.333333333333343" height="70"/>
+                        <rect key="frame" x="30" y="5" width="260" height="70"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="70" id="q10-Le-Gir"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -35,6 +36,7 @@
                 <constraints>
                     <constraint firstItem="D7Y-La-fAs" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="30" id="3J4-lF-yom"/>
                     <constraint firstItem="D7Y-La-fAs" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="8ge-hw-gTJ"/>
+                    <constraint firstAttribute="trailing" secondItem="D7Y-La-fAs" secondAttribute="trailing" constant="30" id="Ih8-63-qJU"/>
                     <constraint firstItem="sUz-Ij-Zsy" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="P3a-fB-l0A"/>
                     <constraint firstItem="D7Y-La-fAs" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="PvZ-ay-Gep"/>
                     <constraint firstItem="sUz-Ij-Zsy" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="6" id="Qfh-Ig-Jbj"/>

@@ -11,6 +11,7 @@ import RealmSwift
 class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet var tableView: UITableView!
+    @IBOutlet var imageView: UIImageView!
     
     let realm = try! Realm()
     var items: [Item] = []
@@ -23,7 +24,7 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor(hex: "FFEED4")
+        imageView.backgroundColor = UIColor(hex: "FFEED4")
         tableView.backgroundColor = UIColor(hex: "FFEED4")
     
         tableView.dataSource = self
@@ -32,7 +33,7 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
         navigationItem.title = selectedEvent.title
         
         let button = UIButton()
-        button.frame = CGRect(x: 275, y: 625, width: 100,height: 100)
+        button.frame = CGRect(x: 260, y: 600, width: 100,height: 100)
         button.setImage(UIImage(named: "reset"), for: .normal)
         button.addTarget(self, action: #selector(reset), for: .touchUpInside)
         tableView.addSubview(button)

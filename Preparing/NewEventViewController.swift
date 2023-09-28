@@ -8,7 +8,7 @@
 import UIKit
 import RealmSwift
 
-class NewEventViewController: UIViewController {
+class NewEventViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet var titleTextField: UITextField!
     
@@ -25,11 +25,11 @@ class NewEventViewController: UIViewController {
         if viewNum == 2{
             titleTextField.text = thisEvent.title
         }
-
         // Do any additional setup after loading the view.
     }
     
     @IBAction private func didTapNumberButton(_ sender: UIButton){
+        
         if viewNum == 1{
             print("make")
             if sender.tag == 1{
@@ -66,24 +66,24 @@ class NewEventViewController: UIViewController {
     }
     
     @IBAction func save(){
-        if viewNum == 1{
-            event.title = titleTextField.text ?? ""
-            createEvent(event: event)
-            
-            let preNC = self.presentingViewController as! UINavigationController
-            let preVC = preNC.viewControllers[preNC.viewControllers.count - 1] as! EventViewController
-            preVC.reload()
-            
-            self.dismiss(animated: true)
-        }else if viewNum == 2{
-            try! realm.write{
-                thisEvent.title = titleTextField.text ?? ""
+        if titleTextField.text?.isEmpty == false{
+            if viewNum == 1{
+                event.title = titleTextField.text ?? ""
+                createEvent(event: event)
+                let preNC = self.presentingViewController as! UINavigationController
+                let preVC = preNC.viewControllers[preNC.viewControllers.count - 1] as! EventViewController
+                preVC.reload()
+                
+                self.dismiss(animated: true)
+            }else if viewNum == 2{
+                try! realm.write{
+                    thisEvent.title = titleTextField.text ?? ""
+                }
+                let preNC = self.presentingViewController as! UINavigationController
+                let preVC = preNC.viewControllers[preNC.viewControllers.count - 1] as! EventViewController
+                preVC.reload()
+                self.dismiss(animated: true)
             }
-            let preNC = self.presentingViewController as! UINavigationController
-            let preVC = preNC.viewControllers[preNC.viewControllers.count - 1] as! EventViewController
-            preVC.reload()
-            
-            self.dismiss(animated: true)
         }
     }
     
@@ -91,6 +91,11 @@ class NewEventViewController: UIViewController {
         try! realm.write {
             realm.add(event)
         }
+    }
+    
+    func textFieldShouldReturn(_ titleTextField: UITextField) -> Bool {
+            titleTextField.resignFirstResponder()
+            return true
     }
     
     @IBAction func back(){

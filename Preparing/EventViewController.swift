@@ -13,6 +13,7 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     @IBOutlet var tableView: UITableView!
     @IBOutlet var collectionView: UICollectionView!
+    @IBOutlet var imageView: UIImageView!
     
     let realm = try! Realm()
     var events: [Event] = []
@@ -22,7 +23,7 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor(hex: "FFEED4")
+        imageView.backgroundColor = UIColor(hex: "FFEED4")
         tableView.backgroundColor = UIColor(hex: "FFEED4")
         tableView.dataSource = self
         tableView.delegate = self
@@ -106,6 +107,7 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     @objc func buttonTapped(_ sender: UIButton){
         let storyboard: UIStoryboard = self.storyboard!
+        sender.showsMenuAsPrimaryAction = true
         let editMenu = UIAction(title: "編集", image: nil) { (action) in
             print("編集")
             let nextView = storyboard.instantiateViewController(identifier: "NewEventView") as! NewEventViewController
@@ -154,7 +156,6 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
         }
         let menu = UIMenu(title: "", image: nil, identifier: nil, options: .displayInline, children: [editMenu, shareMenu, deleteMenu])
         sender.menu = menu
-        sender.showsMenuAsPrimaryAction = true
     }
 }
 
