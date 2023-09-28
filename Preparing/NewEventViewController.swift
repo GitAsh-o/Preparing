@@ -11,6 +11,7 @@ import RealmSwift
 class NewEventViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet var titleTextField: UITextField!
+    @IBOutlet var doneButton: UIButton!
     
     let realm = try! Realm()
     let event = Event()
@@ -21,15 +22,16 @@ class NewEventViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(hex: "FFEED4")
-        
+        titleTextField.delegate  = self
+        event.color = "red"
         if viewNum == 2{
             titleTextField.text = thisEvent.title
         }
+        doneButton.layer.cornerRadius = 25
         // Do any additional setup after loading the view.
     }
     
     @IBAction private func didTapNumberButton(_ sender: UIButton){
-        
         if viewNum == 1{
             print("make")
             if sender.tag == 1{

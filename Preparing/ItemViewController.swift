@@ -33,7 +33,10 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
         navigationItem.title = selectedEvent.title
         
         let button = UIButton()
-        button.frame = CGRect(x: 260, y: 600, width: 100,height: 100)
+        button.imageView?.contentMode = .scaleAspectFill
+        button.contentHorizontalAlignment = .fill
+        button.contentVerticalAlignment = .fill
+        button.frame = CGRect(x: 270, y: 610, width: 75,height: 75)
         button.setImage(UIImage(named: "reset"), for: .normal)
         button.addTarget(self, action: #selector(reset), for: .touchUpInside)
         tableView.addSubview(button)
@@ -71,7 +74,7 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
         button.addTarget(self, action: #selector(buttonTapped(_:)), for: .touchUpInside)
         button.tag = indexPath.row
         
-        button2.frame = CGRect(x: tableView.frame.width * 0.05, y: 10, width: 30, height: 30)
+        button2.frame = CGRect(x: tableView.frame.width * 0.05, y: 12.75, width: 25, height: 25)
         button2.setImage(unchecked, for: .normal)
         button2.addTarget(self, action: #selector(button2Tapped(_:)), for: .touchUpInside)
         button2.tag = indexPath.row

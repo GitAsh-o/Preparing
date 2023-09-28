@@ -11,6 +11,7 @@ import RealmSwift
 class NewItemViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet var titleTextField: UITextField!
+    @IBOutlet var doneButton: UIButton!
     
     let realm = try! Realm()
     var event: Event!
@@ -21,10 +22,12 @@ class NewItemViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(hex: "FFEED4")
+        titleTextField.delegate  = self
         
         if viewNum == 2{
             titleTextField.text = thisItem.title
         }
+        doneButton.layer.cornerRadius = 25
         // Do any additional setup after loading the view.
     }
     
@@ -64,7 +67,6 @@ class NewItemViewController: UIViewController, UITextFieldDelegate {
     
     func textFieldShouldReturn(_ titleTextField: UITextField) -> Bool {
         titleTextField.resignFirstResponder()
-        titleTextField.delegate
         return true
     }
     
