@@ -63,8 +63,9 @@ class NewItemViewController: UIViewController, UITextFieldDelegate {
     }
     
     func textFieldShouldReturn(_ titleTextField: UITextField) -> Bool {
-            titleTextField.resignFirstResponder()
-            return true
+        titleTextField.resignFirstResponder()
+        titleTextField.delegate
+        return true
     }
     
     @IBAction func back(){
