@@ -108,14 +108,14 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
     @objc func buttonTapped(_ sender: UIButton){
         let storyboard: UIStoryboard = self.storyboard!
         sender.showsMenuAsPrimaryAction = true
-        let editMenu = UIAction(title: "編集", image: nil) { (action) in
+        let editMenu = UIAction(title: "Edit", image: nil) { (action) in
             print("編集")
             let nextView = storyboard.instantiateViewController(identifier: "NewEventView") as! NewEventViewController
             nextView.viewNum = 2
             nextView.thisEvent = self.events[sender.tag]
             self.present(nextView, animated: true, completion: nil)
         }
-        let shareMenu = UIAction(title:"共有", image: nil) { [self] (action) in
+        let shareMenu = UIAction(title:"Share", image: nil) { [self] (action) in
             print("共有")
             let itemA = self.realm.objects(Item.self).filter("event == %@", self.events[sender.tag])
             itemA.forEach{ item in
@@ -127,7 +127,7 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
             let activityVC = UIActivityViewController(activityItems: activityItems, applicationActivities: nil)
             self.present(activityVC, animated: true, completion: nil)
         }
-        let deleteMenu = UIAction(title: "削除", image: nil) { (action) in
+        let deleteMenu = UIAction(title: "Delete", image: nil) { (action) in
             print("削除")
             let alert = UIAlertController(
                 title: "イベントを削除",

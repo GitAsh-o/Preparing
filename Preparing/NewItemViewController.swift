@@ -28,6 +28,7 @@ class NewItemViewController: UIViewController, UITextFieldDelegate {
             titleTextField.text = thisItem.title
         }
         doneButton.layer.cornerRadius = 25
+        doneButton.layer.borderWidth = 1.0
         // Do any additional setup after loading the view.
     }
     
@@ -53,7 +54,6 @@ class NewItemViewController: UIViewController, UITextFieldDelegate {
                 let preVC = preNC.viewControllers[preNC.viewControllers.count - 1] as! ItemViewController
                 preVC.reload()
                 preVC.checkArray.removeAll()
-                
                 self.dismiss(animated: true)
             }
         }

@@ -28,7 +28,7 @@
                         <constraints>
                             <constraint firstAttribute="height" constant="70" id="q10-Le-Gir"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                        <fontDescription key="fontDescription" name="Kefa-Regular" family="Kefa" pointSize="20"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>

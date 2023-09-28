@@ -32,14 +32,14 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
         tableView.register(UINib(nibName: "ItemTableViewCell", bundle: nil), forCellReuseIdentifier: "ItemCell")
         navigationItem.title = selectedEvent.title
         
-        let button = UIButton()
+        /*let button = UIButton()
         button.imageView?.contentMode = .scaleAspectFill
         button.contentHorizontalAlignment = .fill
         button.contentVerticalAlignment = .fill
         button.frame = CGRect(x: 270, y: 610, width: 75,height: 75)
         button.setImage(UIImage(named: "reset"), for: .normal)
         button.addTarget(self, action: #selector(reset), for: .touchUpInside)
-        tableView.addSubview(button)
+        tableView.addSubview(button)*/
         // Do any additional setup after loading the view.
     }
     
@@ -102,7 +102,7 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
     }
     
-    @objc func reset(){
+    @IBAction func reset(){
         checkArray.removeAll()
         tableView.reloadData()
     }
