@@ -156,6 +156,7 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
         }
         let menu = UIMenu(title: "", image: nil, identifier: nil, options: .displayInline, children: [editMenu, shareMenu, deleteMenu])
         sender.menu = menu
+        sender.showsMenuAsPrimaryAction = true
     }
 }
 

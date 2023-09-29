@@ -108,6 +108,7 @@ class ItemViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     @objc func buttonTapped(_ sender: UIButton){
+        sender.showsMenuAsPrimaryAction = true
         let editMenu = UIAction(title: "編集", image: nil) { (action) in
             print("編集")
             let storyboard: UIStoryboard = self.storyboard!

@@ -24,7 +24,7 @@ class NewEventViewController: UIViewController, UITextFieldDelegate {
     
     var viewNum: Int!
     var thisEvent: Event!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(hex: "FFEED4")
@@ -52,8 +52,11 @@ class NewEventViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction private func didTapNumberButton(_ sender: UIButton){
-        sender.layer.borderColor = UIColor.black.cgColor
-        sender.layer.borderWidth = 1.0
+        let buttons = (1...6).compactMap{ view.viewWithTag($0) as? UIButton }
+        buttons.forEach { button in
+            button.layer.borderColor = UIColor.clear.cgColor
+            button.layer.borderWidth = 0.0 // 枠線の太さを設定
+        }
         if viewNum == 1{
             print("make")
             if sender.tag == 1{
@@ -87,10 +90,8 @@ class NewEventViewController: UIViewController, UITextFieldDelegate {
                 }
             }
         }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-            sender.layer.borderColor = UIColor.clear.cgColor
-            sender.layer.borderWidth = 0.0
-        }
+        sender.layer.borderColor = UIColor.darkGray.cgColor
+        sender.layer.borderWidth = 1.0
     }
     
     @IBAction func save(){
